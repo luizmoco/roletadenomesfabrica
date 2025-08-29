@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Roleta de Nomes</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="containerCheck">
+  <h3>Selecione os nomes:</h3>
+  <!-- Checkboxes serão criados via script -->
+</div>
+
+<div id="roletaArea">
+  <div id="confetti-container"></div>
+  <div id="nomeSorteado"><h1>Roleta de Nomes</h1></div>
+  <div id="seta">▼</div>
+  <canvas id="roletaCanvas" width="300" height="300"></canvas>
+
+  <div id="controls">
+    <label for="velocidadeSlider" class="sliderLabel">Velocidade (1 a 5): <span id="velocidadeValor">3</span></label>
+    <input type="range" id="velocidadeSlider" min="1" max="5" step="0.1" value="3" />
+
+    <label for="tempoSlider" class="sliderLabel">Tempo de rotação (segundos): <span id="tempoValor">2.5</span></label>
+    <input type="range" id="tempoSlider" min="1" max="10" step="0.1" value="2.5" />
+
+    <button id="btnGirar">Girar Roleta</button>
+    <button id="btnReset">Resetar</button>
+  </div>
+</div>
+
+<audio id="som" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
