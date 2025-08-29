@@ -65,35 +65,3 @@ body {
     margin-top: -30px;
     user-select: none;
   }
-
-  #confetti-container {
-  position: fixed; /* Mude para fixed para cobrir toda a tela */
-  top: 0;
-  left: 0;
-  width: 100vw; /* Use 100vw para a largura da viewport */
-  height: 100vh; /* Use 100vh para a altura da viewport */
-  pointer-events: none;
-  z-index: 9999; /* Garante que os confetes fiquem por cima de tudo */
-}
-
-.confetti {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  animation-duration: 2s; /* Aumenta a duração da animação */
-  animation-timing-function: cubic-bezier(0.1, 1, 0.5, 1); /* Curva de animação mais explosiva */
-  animation-fill-mode: forwards;
-  opacity: 0;
-}
-
-@keyframes confetti-fall {
-  0% {
-    opacity: 1;
-    transform: translate(0, 0) rotate(0deg) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(var(--x), var(--y)) rotate(720deg) scale(0); /* Aumenta a rotação e faz o confete encolher */
-  }
-}

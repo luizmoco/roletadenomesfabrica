@@ -338,55 +338,23 @@ function tocarSomRoleta(duracao) {
 }
 
 function mostrarResultado(destino) {
-  let total = nomes.length;
-  let anguloPorFatia = (2 * Math.PI) / total;
+  let total = nomes.length;
+  let anguloPorFatia = (2 * Math.PI) / total;
 
-  let anguloSeta = 1.5 * Math.PI;
+  // A seta aponta para cima, 270 graus = 1.5 * PI radianos
+  let anguloSeta = 1.5 * Math.PI;
 
-  let anguloRelativo = (anguloSeta - anguloAtual) % (2 * Math.PI);
-  if (anguloRelativo < 0) anguloRelativo += 2 * Math.PI;
+  let anguloRelativo = (anguloSeta - anguloAtual) % (2 * Math.PI);
+  if (anguloRelativo < 0) anguloRelativo += 2 * Math.PI;
 
-  let index = Math.floor(anguloRelativo / anguloPorFatia) % total;
+  let index = Math.floor(anguloRelativo / anguloPorFatia) % total;
 
-  nomeSorteado.textContent = `Parabéns ${nomes[index]}`;
-
-  const confettiContainer = document.getElementById('confetti-container');
-  const numConfetti = 150;
-
-  for (let i = 0; i < numConfetti; i++) {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-
-    // Define a posição inicial do confete no centro da tela
-    const startX = window.innerWidth / 2;
-    const startY = window.innerHeight / 2;
-    confetti.style.left = `${startX}px`;
-    confetti.style.top = `${startY}px`;
-
-    // Define as variáveis CSS para a animação de explosão
-    const finalX = (Math.random() - 0.5) * window.innerWidth * 1.5; // Espalha horizontalmente
-    const finalY = (Math.random() - 0.5) * window.innerHeight * 1.5; // Espalha verticalmente
-    
-    confetti.style.setProperty('--x', `${finalX}px`);
-    confetti.style.setProperty('--y', `${finalY}px`);
-
-    confetti.style.backgroundColor = getRandomColor();
-    confetti.style.animationName = 'confetti-fall';
-    confetti.style.animationDelay = `${Math.random() * 0.3}s`;
-
-    confettiContainer.appendChild(confetti);
-
-    // Remove o confete após a animação
-    confetti.addEventListener('animationend', () => {
-      confetti.remove();
-    });
-  }
-  
-  // Ativa o efeito visual de zoom
-  efeitoZoomAtivo = true;
-  zoomFrame = 0;
-  animarZoomNome();
-  desenharRoleta();
+  nomeSorteado.textContent = `Parabéns ${nomes[index]}`;
+  // Ativa o efeito visual
+  efeitoZoomAtivo = true;
+  zoomFrame = 0;
+  animarZoomNome();
+  desenharRoleta();
 }
 
 function easeOut(t) {
@@ -405,15 +373,6 @@ function resetRoleta() {
   tempoSlider.value = 2.5;
   velocidadeValor.textContent = '3';
   tempoValor.textContent = '2.5';
-}
-
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters.charAt(Math.floor(Math.random() * 16));
-  }
-  return color;
 }
 
 // Atualiza o texto dos sliders
